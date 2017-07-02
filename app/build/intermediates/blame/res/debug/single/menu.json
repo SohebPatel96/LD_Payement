@@ -1,0 +1,54 @@
+[
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_forgot_password.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\payUMoneysdk\\build\\intermediates\\bundles\\default\\res\\menu\\activity_forgot_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_web_view.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\payUMoneysdk\\build\\intermediates\\bundles\\default\\res\\menu\\activity_web_view.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\popup.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\popup.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_payments.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\sdkui\\build\\intermediates\\bundles\\default\\res\\menu\\menu_payments.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\popup.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\popup.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\sdk_menu.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\payUMoneysdk\\build\\intermediates\\bundles\\default\\res\\menu\\sdk_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\sdkui\\build\\intermediates\\bundles\\default\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_temp.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\sdkui\\build\\intermediates\\bundles\\default\\res\\menu\\menu_temp.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\activity_main_drawer.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\Users\\MSP\\Desktop\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\LegalDesire\\LD final\\Merge-Prem and Soheb\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\MSP\\.android\\build-cache\\bf4b689841af6555a056676167e33733739452e8\\output\\res\\menu\\menu_main.xml"
+    }
+]
