@@ -73,9 +73,13 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
         boolean isDebug = true;
 
 
-        String key = "2fcU3pmI";
-        String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
-        String salt = "BxA24L2F7Z";   //  THIS WORKS
+        String key = "uRURJ8";
+        String merchantId = "329037";
+        String salt = "zPi921sH";
+
+        // String key = "2fcU3pmI";
+        // String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
+        //   String salt = "BxA24L2F7Z";   //  THIS WORKS
 
       /*  String key = "yX8OvWy1";     //These credentials are from https://www.payumoney.com/
         String merchantId = "5826688"; //THIS DOESN'T WORK
@@ -99,7 +103,7 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
                 .setUdf3(udf3)
                 .setUdf4(udf4)
                 .setUdf5(udf5)
-                .setIsDebug(isDebug)
+                .setIsDebug(false)
                 .setKey(key)
                 .setMerchantId(merchantId);
 
