@@ -1,7 +1,10 @@
 package com.example.msp.legaldesire;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +29,13 @@ public class Review_Lawyer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Reviews");
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Reviews </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Reviews </font>"));
+        }
         setContentView(R.layout.review__lawyer);
         Bundle extras = getIntent().getExtras();
         lawyer_id = extras.getString("lawyer_id");

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_case"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.msp.legaldesire.MyCase.EditCase">
+
+    <TextView
+        android:id="@+id/text_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="* fields are mandatory" />
+
+    <EditText
+        android:id="@+id/edit_courtname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_msg"
+        android:hint="Court Name *"
+        android:maxLength="20"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/edit_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_courtname"
+        android:hint="Place *"
+        android:maxLength="30"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/edit_casename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_place"
+        android:hint="Case Name *"
+        android:maxLength="20"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/text_selectdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_casename"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/firsthearing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edit_casename"
+        android:layout_margin="10dp"
+        android:background="#F17A12"
+        android:onClick="showDatePickerDialog1"
+        android:text="1st date"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/text_selectdate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firsthearing"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/secondhearing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/firsthearing"
+        android:layout_margin="10dp"
+        android:background="#F17A12"
+        android:onClick="showDatePickerDialog2"
+        android:text="2nd date"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/text_selectdate3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/secondhearing"
+        android:padding="10dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/thirdhearing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/secondhearing"
+        android:layout_margin="10dp"
+        android:background="#F17A12"
+        android:onClick="showDatePickerDialog3"
+        android:text="3rd date"
+        android:textColor="@color/white" />
+
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#F17A12"
+        android:text="Confirm"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

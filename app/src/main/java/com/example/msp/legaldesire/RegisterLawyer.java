@@ -2,11 +2,14 @@ package com.example.msp.legaldesire;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -53,6 +56,14 @@ public class RegisterLawyer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_lawyer);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>"));
+        }
 
         ActivityCompat.requestPermissions(this,
                 new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},

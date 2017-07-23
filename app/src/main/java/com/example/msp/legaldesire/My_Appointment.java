@@ -33,7 +33,6 @@ public class My_Appointment extends Fragment {
     boolean isLawyer = false;
 
     ListView listView;
-    My_Appointment_Regular_Adapter my_appointment_adapter;
 
     public My_Appointment() {
         // Required empty public constructor
@@ -54,8 +53,8 @@ public class My_Appointment extends Fragment {
         View view = inflater.inflate(R.layout.my_appointment, container, false);
         listView = (ListView) view.findViewById(R.id.list_appointments);
         if (isLawyer) {
-            Log.d("appointment123","inside Lawyer");
-            final My_Appointment_Regular_Adapter my_appointment_regular_adapter = new My_Appointment_Regular_Adapter(getContext(), mAppointmentDate, mAppointmentTime, mAppointmentType, mLawyerNames, mOfficeLocation,isLawyer);
+            Log.d("appointment123", "inside Lawyer");
+            final My_Appointment_Lawyer_Adapter2 my_appointment_regular_adapter = new My_Appointment_Lawyer_Adapter2(getContext(), mAppointmentDate, mAppointmentTime, mAppointmentType, mLawyerNames, mOfficeLocation);
             listView.setAdapter(my_appointment_regular_adapter);
             final DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer").child(mUserID).child("Appointment");
             user.addValueEventListener(new ValueEventListener() {
@@ -68,7 +67,7 @@ public class My_Appointment extends Fragment {
                         mLawyerNames.add(postSnapshot.child("User Name").getValue(String.class));
                         mOfficeLocation.add(postSnapshot.child("Lawyer Office Address").getValue(String.class));
                         my_appointment_regular_adapter.notifyDataSetChanged();
-                        Log.d("appointment123","inside loop");
+                        Log.d("appointment123", "inside loop");
                     }
                 }
 
@@ -78,8 +77,8 @@ public class My_Appointment extends Fragment {
                 }
             });
         } else {
-            Log.d("appointment123","inside Regular");
-            final My_Appointment_Regular_Adapter my_appointment_regular_adapter = new My_Appointment_Regular_Adapter(getContext(), mAppointmentDate, mAppointmentTime, mAppointmentType, mLawyerNames, mOfficeLocation,isLawyer);
+            Log.d("appointment123", "inside Regular");
+            final My_Appointment_Regular_Adapter my_appointment_regular_adapter = new My_Appointment_Regular_Adapter(getContext(), mAppointmentDate, mAppointmentTime, mAppointmentType, mLawyerNames, mOfficeLocation, isLawyer);
             listView.setAdapter(my_appointment_regular_adapter);
             final DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("User").child("Regular").child(mUserID).child("Appointment");
             user.addValueEventListener(new ValueEventListener() {

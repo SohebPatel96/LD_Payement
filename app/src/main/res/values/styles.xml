@@ -16,7 +16,11 @@
 
     </style>
 
-    <style name="TextColor" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    <style name="TextColor" parent="Theme.AppCompat.TextColor">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.AppCompat.TextColor" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">#FFFFFF</item>
     </style>
 

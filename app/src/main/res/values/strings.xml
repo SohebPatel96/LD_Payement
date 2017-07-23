@@ -15,6 +15,7 @@
     <string name="spinner3">type</string>
     <string name="spinner4">Lawyer Type</string>
 
+
     <string-array name="Distance">
         <item>5Km</item>
         <item>10Km</item>

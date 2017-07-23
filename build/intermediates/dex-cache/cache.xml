@@ -3,6 +3,33 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\97d5de0a84829810aff4e0a45df7c77988b02b1a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_f810bb9a4e48c6fb5ab8dbf5a7fcac91da407474.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\4e45e57f4776980b7c43b6527bf748fa17d0a242\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bc5cb7b8461ba72332bbc062210bf2bd52aa39ce">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_c7f22cc76f07d899b2406a9e81fe66656a8a079e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.18\38da306aafee11459cd935a01d2c92a98dc670a4\library-1.0.18.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="38da306aafee11459cd935a01d2c92a98dc670a4">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\library-1.0.18_2266daf2c05072fa251774b365354128218ba061.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\libs\YouTubeAndroidPlayerApi.jar"
         jumboMode="false"
         optimize="true"
@@ -12,12 +39,138 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\sdkui\build\intermediates\bundles\default\classes.jar"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.2.2\d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b\jackson-core-2.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\jackson-core-2.2.2_c5b797bb7acd55c231a59f447d21b964c7d51a44.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-android\2.3.1\be29b24233711c419ce935aa0a1b12ebc49d1c9a\firebase-client-android-2.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="be29b24233711c419ce935aa0a1b12ebc49d1c9a">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\firebase-client-android-2.3.1_fbe457807ad50adad838a5e63c018dad4cd71cd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\4e45e57f4776980b7c43b6527bf748fa17d0a242\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="25e6e52a5d32ce80e0925128199d87bb96bd4045">
-        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_40fac0cffa835c3ffb77128bd72afb5a955f46d4.jar" />
+        sha1="bc5cb7b8461ba72332bbc062210bf2bd52aa39ce">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_c7f22cc76f07d899b2406a9e81fe66656a8a079e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\de.greenrobot\eventbus\2.2.1\a18ff12a9ab5ae52fd30d42f134517997568231e\eventbus-2.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a18ff12a9ab5ae52fd30d42f134517997568231e">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\eventbus-2.2.1_21619c38e52c1d3232bec786e275f8d37caedfb2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.firebase\firebase-client-jvm\2.3.1\4d53b7d6983247af02b8fe7e4228fff555a5e828\firebase-client-jvm-2.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4d53b7d6983247af02b8fe7e4228fff555a5e828">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\firebase-client-jvm-2.3.1_e7be1022cc01bab562682a94da76d60605f3cfa2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\libs\YouTubeAndroidPlayerApi.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\YouTubeAndroidPlayerApi_a6cfec8e55a14033dc7a5b5e7f2e956c68f33c60.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\c000f477d00aaf5cb57e1dbc7f083499a2acbd89\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f5bcd9cbfeedc58f493339841a7c5d0347a39f0b">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_d02aa7193117ec993860a01da3eed93f4b6ea8e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\5742b83f9b3e2cec5fb9789f5d1177758cc2adaf\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b81c788c5f175f94ddaac2f65e5d1726371e0963">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_a2a40a5cfbb07b427ce76884a1c70c1c239f1d3e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\bf4b689841af6555a056676167e33733739452e8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="591e7c1eb05bda2bcee22d151402fd8d61ffeca9">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_06ab9719de2e7dacb74f425be222212b4e81a0d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.android\build-cache\b671c47e5940027773be6ffa4a60eb35f32bade7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_3b9164929246097012222c543a14fe2d043ea989.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\payUMoneysdk\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ad5a1ee4ec67a9fe1a312ccfc820bd2b9575d704">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\classes_4e6d82453cc8796fe81b2efe661460fc144c2ee1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.firebase\tubesock\0.0.11\d37cb67277928cf59344b4196af8d9cee1f1a27c\tubesock-0.0.11.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d37cb67277928cf59344b4196af8d9cee1f1a27c">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\tubesock-0.0.11_8f9df2d1c1663ae1294bcac58e989d3597f9b857.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-databind\2.2.2\3c8f6018eaa72d43b261181e801e6f8676c16ef6\jackson-databind-2.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\jackson-databind-2.2.2_bf5209c0655e6748e9f03a4b7eedf3b8edbe3cea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-annotations\2.2.2\285cb9c666f0f0f3dd8a1be04e1f457eb7b15113\jackson-annotations-2.2.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\jackson-annotations-2.2.2_ae04b9debda6d171ba7ad8c88cadbffac8168f0f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\MSP\.gradle\caches\modules-2\files-2.1\com.mobsandgeeks\android-saripaar\1.0.3\c24cfd9331b6d5a2ee15dccb60774c7cc5debd99\android-saripaar-1.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c24cfd9331b6d5a2ee15dccb60774c7cc5debd99">
+        <dex dex="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\intermediates\pre-dexed\debug\android-saripaar-1.0.3_5cd369485d91e8bddd66409d1f52bdd62d0b97fc.jar" />
     </item>
 
 </items>

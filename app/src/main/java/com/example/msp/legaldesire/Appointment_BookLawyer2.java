@@ -39,6 +39,7 @@ public class Appointment_BookLawyer2 extends Fragment {
     public final long ONEMONTH = 2592000;
     public final long ONEDAY = 86400;
     String mUserID, mLawyerID, mUserName, mLawyerName, mUserAddress;
+    boolean isLawyer = false;
     CircleImageView mImageProfilePic;
     TextView mNameText;
     EditText mEditUserAddress;
@@ -68,6 +69,7 @@ public class Appointment_BookLawyer2 extends Fragment {
         mLawyerID = bundle.getString("Lawyer ID");
         mLatitude = bundle.getDouble("Latitude");
         mLongitude = bundle.getDouble("Longitude");
+        isLawyer = bundle.getBoolean("isLawyer");
         Log.d(TAG, "inside oncreate");
         Log.d(TAG, "Longitude,latitude" + mLongitude + "," + mLatitude);
 //        ((OnLoginSuccessful) getActivity()).setActionBarTitle("Book Appointment");
@@ -110,7 +112,11 @@ public class Appointment_BookLawyer2 extends Fragment {
                 intent.putExtra("Lawyer ID", mLawyerID);
                 intent.putExtra("User Name", mUserName);
                 intent.putExtra("Lawyer Name", mLawyerName);
+                intent.putExtra("isLawyer", isLawyer);
+
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.enter,R.anim.nothing);
+
             }
         });
 
@@ -189,19 +195,33 @@ public class Appointment_BookLawyer2 extends Fragment {
 
             }
         });
+        if (isLawyer) {
+            root2.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mUserName = dataSnapshot.child("Name").getValue(String.class);
 
-        root3.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mUserName = dataSnapshot.child("Name").getValue(String.class);
+                }
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else {
+            root3.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mUserName = dataSnapshot.child("Name").getValue(String.class);
 
-            }
-        });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer");

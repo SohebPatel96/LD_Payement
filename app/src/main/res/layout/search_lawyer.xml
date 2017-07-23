@@ -5,12 +5,33 @@
     android:background="@color/grey_200"
     tools:context="com.example.msp.legaldesire.SearchLawyer">
 
+
     <!-- TODO: Update blank fragment layout -->
+
+
+    <com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/button_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#BFF17A12"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
 
     <RelativeLayout
         android:id="@+id/wrap_one"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_panel"
+        android:background="#80F17A12"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <TextView
             android:id="@+id/textView"
@@ -27,6 +48,7 @@
             android:layout_margin="4dp"
             android:layout_toRightOf="@+id/textView"
             android:entries="@array/Distance"
+            android:popupBackground="#BFF17A12"
             android:prompt="@string/spinner1"
             android:spinnerMode="dropdown"
             android:textSize="16sp" />
@@ -49,6 +71,7 @@
             android:layout_margin="4dp"
             android:layout_toRightOf="@+id/textView2"
             android:entries="@array/Rating"
+            android:popupBackground="#BFF17A12"
             android:prompt="@string/spinner2"
             android:spinnerMode="dropdown"
             android:textSize="16sp" />
@@ -71,10 +94,10 @@
             android:layout_margin="4dp"
             android:layout_toRightOf="@+id/textView3"
             android:entries="@array/Type"
+            android:popupBackground="#BFF17A12"
             android:prompt="@string/spinner3"
             android:spinnerMode="dropdown"
             android:textSize="16sp" />
-
 
 
         <Button
@@ -88,15 +111,178 @@
             android:text="Search"
             android:textColor="@color/white"
             android:textSize="16sp" />
-
     </RelativeLayout>
 
-
-    <com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/mapView"
+    <RelativeLayout
+        android:id="@+id/profile_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/wrap_one"
-        android:paddingTop="10dp" />
+        android:layout_height="500dp"
+        android:layout_alignParentBottom="true"
+        android:background="#99F17A12">
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilepic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="20dp"
+            android:padding="10dp"
+            android:src="@drawable/empty_profile" />
+
+        <ImageView
+            android:id="@+id/img_indicatior"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/profilepic"
+            android:layout_alignRight="@+id/profilepic"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/blue_tick" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profilepic"
+            android:paddingTop="40dp"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_name"
+            android:layout_toRightOf="@+id/profilepic"
+            android:isIndicator="true"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:id="@+id/text_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_name"
+            android:layout_toRightOf="@+id/rating"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/profilepic"
+            android:layout_marginTop="10dp"
+            android:background="#F17A12" />
+
+
+        <TextView
+            android:id="@+id/text_areas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line1"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Practice Areas:"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_case"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_areas"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/text_case"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="#F17A12" />
+
+        <ImageView
+            android:id="@+id/img_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/line2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:src="@drawable/orange_location" />
+
+        <TextView
+            android:id="@+id/text_loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line2"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/img_location"
+            android:maxLength="30"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/line3"
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/text_loc"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#F17A12" />
+
+
+        <TextView
+            android:id="@+id/text_rev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/line3"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Reviews:"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/list_reviews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_rev"
+            android:background="@android:color/transparent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"></ListView>
+
+        <Button
+            android:id="@+id/view_lawyer_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#F17A12"
+            android:text="View Profile"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
 
 </RelativeLayout>

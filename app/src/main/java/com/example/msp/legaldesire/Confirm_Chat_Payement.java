@@ -3,9 +3,12 @@ package com.example.msp.legaldesire;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,13 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm__chat__payement);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Payment </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Payment </font>"));
+        }
         Bundle bundle = getIntent().getExtras();
         lawyer_id = bundle.getString("Lawyer ID");
         lawyer_name = bundle.getString("Lawyer Name");
@@ -43,7 +53,10 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
 
         mTextView = (TextView) findViewById(R.id.textView);
         mButton = (Button) findViewById(R.id.btn_pay);
-        mTextView.setText("On successful payement of 50₹, lawyer " + lawyer_name + " will be added to your chats. Go to 'My Chats' to chat with this lawyer");
+        mTextView.setText("On successful payement of 50₹, lawyer '" + lawyer_name + "' will be added to your chats. Go to 'My Chats' to chat with this lawyer\n" +
+                "\nDON'T WORRY!! You will be refunded if:\n" +
+                "✔The Lawyer didn't reply\n" +
+                "✔or you didn't find the counselling helpful");
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +74,7 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
         String phone = "8882434664";
         String productName = "product_name";
         String firstName = "piyush";
-        String txnId = "0nf7" + System.currentTimeMillis();
+        String txnId = "legaldesire" + System.currentTimeMillis();
         String email = "piyush.jain@payu.in";
         String sUrl = "https://test.payumoney.com/mobileapp/payumoney/success.php";
         String fUrl = "https://test.payumoney.com/mobileapp/payumoney/failure.php";
@@ -73,13 +86,13 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
         boolean isDebug = true;
 
 
-        String key = "uRURJ8";
-        String merchantId = "329037";
-        String salt = "zPi921sH";
+        //   String key = "uRURJ8";
+        //    String merchantId = "329037";  //Real creadentials set dubug to false and run these
+        //  String salt = "zPi921sH";
 
-        // String key = "2fcU3pmI";
-        // String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
-        //   String salt = "BxA24L2F7Z";   //  THIS WORKS
+        String key = "2fcU3pmI";
+        String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
+        String salt = "BxA24L2F7Z";   //  THIS WORKS
 
       /*  String key = "yX8OvWy1";     //These credentials are from https://www.payumoney.com/
         String merchantId = "5826688"; //THIS DOESN'T WORK
@@ -103,7 +116,7 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
                 .setUdf3(udf3)
                 .setUdf4(udf4)
                 .setUdf5(udf5)
-                .setIsDebug(false)
+                .setIsDebug(true)
                 .setKey(key)
                 .setMerchantId(merchantId);
 
@@ -223,6 +236,13 @@ public class Confirm_Chat_Payement extends AppCompatActivity {
             }
         });
         builder.show();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing,R.anim.exit2);
 
     }
 }

@@ -54,7 +54,7 @@ public class Chat_Lawyer_Profile extends Fragment {
     ImageView mImageProfilePic;
     Button mAddChat, mVisitLocation, mAppointment, mSubmitReview, mViewReview;
     boolean mIfChatExist;
-    TextView mNameText, mCityText, mTypeText;
+    TextView mNameText, mCityText, mTypeText, mRatingText, mTotalUserText;
     EditText mEditReview;
     RatingBar mRatingBar, mLawyerRating;
     double latitude, longitude;
@@ -68,6 +68,8 @@ public class Chat_Lawyer_Profile extends Fragment {
     TextView name1, name2, review1, review2;
     RatingBar rating1, rating2;
     Review_Adapter review_adapter;
+
+    int total_user_review = 0;
 
     public Chat_Lawyer_Profile() {
         // Required empty public constructor
@@ -94,6 +96,8 @@ public class Chat_Lawyer_Profile extends Fragment {
         mLawyerRating = (RatingBar) view.findViewById(R.id.lawyer_rating);
         mTypeText = (TextView) view.findViewById(R.id.lawyertxt_type);
         mCityText = (TextView) view.findViewById(R.id.lawyertxt_city);
+        mRatingText = (TextView) view.findViewById(R.id.txt_avg_rating);
+        mTotalUserText = (TextView) view.findViewById(R.id.txt_user_rating);
         mAddChat = (Button) view.findViewById(R.id.btn_addtochat);
         mAppointment = (Button) view.findViewById(R.id.btn_hire);
         mVisitLocation = (Button) view.findViewById(R.id.btn_visit_location);
@@ -127,8 +131,38 @@ public class Chat_Lawyer_Profile extends Fragment {
         //mListView = (ListView) view.findViewById(R.id.list_reviews);
         //  review_adapter = new Review_Adapter(getContext(), reviewName, reviewContent, reviewRating);
         //  mListView.setAdapter(review_adapter);
+
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer").child(mLawyerID);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                double rating = dataSnapshot.child("Rating").getValue(Double.class);
+                float rat = (float) (rating - 0.001);
+                String r = String.valueOf(rat);
+                mRatingText.setText(r + " ");
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         final DatabaseReference reviewDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer").child(mLawyerID).child("Review");
-        reviewDatabase.limitToFirst(2).addListenerForSingleValueEvent(new ValueEventListener() {
+        reviewDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        reviewDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int count = 0;
@@ -160,6 +194,7 @@ public class Chat_Lawyer_Profile extends Fragment {
                             rating2.setRating(rating);
                         }
                     }
+                    mTotalUserText.setText(" " + count + " reviews");
                 }
             }
 
@@ -280,16 +315,19 @@ public class Chat_Lawyer_Profile extends Fragment {
         mAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isLawyer) {
-                    Toast.makeText(getContext(), "Lawyers cannot make appointments", Toast.LENGTH_SHORT).show();
+                if (mUserID.equals(mLawyerID)) {
+                    Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
                 } else {
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     Appointment_BookLawyer appointment_bookLawyer = new Appointment_BookLawyer();
                     Bundle bundle = new Bundle();
                     bundle.putString("User ID", mUserID);
                     bundle.putString("Lawyer ID", mLawyerID);
+                    bundle.putBoolean("isLawyer", isLawyer);
                     appointment_bookLawyer.setArguments(bundle);
+                    fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
                     fragmentTransaction.replace(R.id.fragment_container, appointment_bookLawyer).commit();
+                    fragmentTransaction.addToBackStack(null);
                 }
             }
         });
@@ -297,8 +335,8 @@ public class Chat_Lawyer_Profile extends Fragment {
         mVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isLawyer) {
-                    Toast.makeText(getContext(), "Lawyers cannot make appointments", Toast.LENGTH_SHORT).show();
+                if (mUserID.equals(mLawyerID)) {
+                    Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
                 } else {
                     FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                     Appointment_BookLawyer2 appointment_bookLawyer2 = new Appointment_BookLawyer2();
@@ -307,8 +345,11 @@ public class Chat_Lawyer_Profile extends Fragment {
                     bundle.putString("Lawyer ID", mLawyerID);
                     bundle.putDouble("Latitude", latitude);
                     bundle.putDouble("Longitude", longitude);
+                    bundle.putBoolean("isLawyer", isLawyer);
                     appointment_bookLawyer2.setArguments(bundle);
+                    fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
                     fragmentTransaction.replace(R.id.fragment_container, appointment_bookLawyer2).commit();
+                    fragmentTransaction.addToBackStack(null);
                 }
             }
         });
@@ -341,66 +382,32 @@ public class Chat_Lawyer_Profile extends Fragment {
                     Picasso.with(getContext()).load(mProfilepic).into(mImageProfilePic);
                 }
 
-                boolean isFirst = false;
                 if (type1.equals("Civil")) {
-                    isFirst = true;
-                    Log.d(TAG, "Incivil");
-                    mTypeText.setText(type1);
+                    mTypeText.setText(mTypeText.getText() + "•Civil");
                 }
                 if (type2.equals("Criminal")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type2);
-                    } else {
-                        isFirst = true;
-                        mTypeText.setText(type2);
+                    mTypeText.setText(mTypeText.getText() + " •Criminal");
 
-                    }
                 }
                 if (type3.equals("IPR")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type3);
-                    } else {
-                        isFirst = true;
-                        mTypeText.setText(type3);
+                    mTypeText.setText(mTypeText.getText() + " •IPR");
 
-                    }
                 }
                 if (type4.equals("Taxation")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type4);
-                    } else {
-                        isFirst = true;
-                        mTypeText.setText(type4);
+                    mTypeText.setText(mTypeText.getText() + " •Taxation");
 
-                    }
                 }
                 if (type5.equals("Insurance")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type5);
-                    } else {
-                        isFirst = true;
-                        mTypeText.setText(type3);
+                    mTypeText.setText(mTypeText.getText() + " •Insurance");
 
-                    }
                 }
                 if (type6.equals("Medical")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type6);
-                    } else {
-                        isFirst = true;
-                        mTypeText.setText(type6);
-
-                    }
+                    mTypeText.setText(mTypeText.getText() + " •Medical");
                 }
                 if (type7.equals("MotorVehicle")) {
-                    if (isFirst) {
-                        mTypeText.setText(mTypeText.getText() + "," + type7);
-                    } else {
-                        //  isFirst = true;
-                        mTypeText.setText(type7);
-
-                    }
+                    mTypeText.setText(mTypeText.getText() + " •Motor Vehicle");
                 }
+
                 mLawyerRating.setRating((float) rating);
                 mNameText.setText(mName);
                 mCityText.setText(mCity);
@@ -418,7 +425,71 @@ public class Chat_Lawyer_Profile extends Fragment {
             @Override
             public void onClick(View view) {
                 if (isLawyer) {
-                    Toast.makeText(getContext(), "Permission Denied:Lawyers cannot add to Chatlist", Toast.LENGTH_SHORT).show();
+                    if (mUserID.equals(mLawyerID)) {
+                        Toast.makeText(getContext(), "Permission Denied", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        final DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Chat");
+                        final DatabaseReference root2 = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer");
+
+                        root2.child(mLawyerID).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                lawyer_profile_pic = dataSnapshot.child("Profile_Pic").getValue(String.class);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        root2.child(mUserID).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                user_profile_pic = dataSnapshot.child("Profile_Pic").getValue(String.class);
+                                mUserName = dataSnapshot.child("Name").getValue(String.class);
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        root.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                                    String lawyer_id = postSnapshot.child("Lawyer ID").getValue(String.class);
+                                    String user_id = postSnapshot.child("User ID").getValue(String.class);
+                                    if (lawyer_id.equals(mLawyerID) && user_id.equals(mUserID)) {
+                                        mIfChatExist = true;
+                                        Toast.makeText(getContext(), "Lawyer already added to chat list", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                if (!mIfChatExist) {
+                                    //   navigateToBaseActivity();
+                                    // makePayment();
+                                    Intent intent = new Intent(getActivity(), Confirm_Chat_Payement.class);
+                                    intent.putExtra("Lawyer ID", mLawyerID);
+                                    intent.putExtra("Lawyer Name", mName);
+                                    intent.putExtra("User ID", mUserID);
+                                    intent.putExtra("User Name", mUserName);
+                                    intent.putExtra("Lawyer profile", lawyer_profile_pic);
+                                    intent.putExtra("User profile", user_profile_pic);
+                                    startActivity(intent);
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
                 } else {
                     final DatabaseReference root = FirebaseDatabase.getInstance().getReference().child("Chat");
                     final DatabaseReference root2 = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer");
@@ -471,6 +542,7 @@ public class Chat_Lawyer_Profile extends Fragment {
                                 intent.putExtra("Lawyer profile", lawyer_profile_pic);
                                 intent.putExtra("User profile", user_profile_pic);
                                 startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.enter, R.anim.exit);
                             }
 
                         }

@@ -3,9 +3,12 @@ package com.example.msp.legaldesire;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import java.util.HashMap;
 
 public class Confirm_Appointment extends AppCompatActivity {
     public final String TAG = "appointment123";
+    boolean isLawyer;
     String user_id, user_name, lawyer_id, lawyer_name, appointment_date, appointment_time, lawyer_office_address;
     TextView textView;
     Button button;
@@ -33,6 +37,14 @@ public class Confirm_Appointment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm__appointment);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        // getSupportActionBar().setTitle(Html.fromHtml("<font color='#ff0000'>ActionBartitle </font>"));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>"));
+        }
         Bundle bundle = getIntent().getExtras();
         user_id = bundle.getString("User ID");
         user_name = bundle.getString("User Name");
@@ -41,11 +53,14 @@ public class Confirm_Appointment extends AppCompatActivity {
         lawyer_office_address = bundle.getString("Lawyer Office Address");
         appointment_date = bundle.getString("Appointment Date");
         appointment_time = bundle.getString("Appointment Time");
+        isLawyer = bundle.getBoolean("isLawyer");
 
         textView = (TextView) findViewById(R.id.textView);
         button = (Button) findViewById(R.id.btn_pay);
 
-        textView.setText("Lawyer Name:" + lawyer_name + "\nLawyer Address:" + lawyer_office_address + "\nAppointment Date" + appointment_date + "\nAppointment Time:" + appointment_time);
+        textView.setText("On payment of 150₹, You will have an Office Appointment with Lawyer " + "'" + lawyer_name + "'" + "\n\nDetails:\nLawyer Name:" + lawyer_name + "\nLawyer Address:" + lawyer_office_address + "\nAppointment Date" + appointment_date + "\nAppointment Time:" + appointment_time+
+                "\n\nDON'T WORRY!! You will be refunded if:" +
+                        "\n✔The Appointment gets cancelled by the lawyer");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +110,46 @@ public class Confirm_Appointment extends AppCompatActivity {
         });
     }
 
+    public void setBookingForLawyer() {
+        final DatabaseReference root2 = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer");
+        final DatabaseReference root3 = FirebaseDatabase.getInstance().getReference().child("User").child("Regular");
+
+        HashMap<String, Object> lawyerAppointments = new HashMap<String, Object>();
+        lawyerAppointments.put("User ID", user_id);
+        lawyerAppointments.put("User Name", user_name);
+        lawyerAppointments.put("Appointment Type", "Office Appointment");
+        lawyerAppointments.put("Appointment Date", appointment_date);
+        lawyerAppointments.put("Appointment Time", appointment_time);
+        lawyerAppointments.put("Lawyer Office Address", lawyer_office_address);
+
+
+        HashMap<String, Object> userAppointments = new HashMap<String, Object>();
+        userAppointments.put("Lawyer ID", lawyer_id);
+        userAppointments.put("Lawyer Name", lawyer_name);
+        userAppointments.put("Appointment Type", "Office Appointment");
+        userAppointments.put("Appointment Date", appointment_date);
+        userAppointments.put("Appointment Time", appointment_time);
+        userAppointments.put("Lawyer Office Address", lawyer_office_address);
+
+        root2.child(lawyer_id).child("Appointment").push().setValue(lawyerAppointments).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(Confirm_Appointment.this, "Booking...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        root2.child(user_id).child("Personal_Appointment").push().setValue(userAppointments).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(Confirm_Appointment.this, "Appointment Confirmed, Check 'My Appointments' for further details", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Confirm_Appointment.this, Login.class);
+                startActivity(intent);
+
+            }
+        });
+    }
+
+
     private double getAmount() {
         Double amount = 150.0;
         return amount;
@@ -104,7 +159,7 @@ public class Confirm_Appointment extends AppCompatActivity {
         String phone = "8882434664";
         String productName = "product_name";
         String firstName = "piyush";
-        String txnId = "0nf7" + System.currentTimeMillis();
+        String txnId = "legaldesire" + System.currentTimeMillis();
         String email = "piyush.jain@payu.in";
         String sUrl = "https://test.payumoney.com/mobileapp/payumoney/success.php";
         String fUrl = "https://test.payumoney.com/mobileapp/payumoney/failure.php";
@@ -115,13 +170,13 @@ public class Confirm_Appointment extends AppCompatActivity {
         String udf5 = "";
         boolean isDebug = true;
 
-        String key = "uRURJ8";
-        String merchantId = "329037";
-        String salt="zPi921sH";
+        //  String key = "uRURJ8";
+        //   String merchantId = "329037";
+        //   String salt="zPi921sH";
 
-       // String key = "2fcU3pmI";
-       // String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
-       // String salt = "BxA24L2F7Z";   //  THIS WORKS
+        String key = "2fcU3pmI";
+        String merchantId = "4947182";// These credentials are from https://test.payumoney.com/
+        String salt = "BxA24L2F7Z";   //  THIS WORKS
 
       /*  String key = "yX8OvWy1";     //These credentials are from https://www.payumoney.com/
         String merchantId = "5826688"; //THIS DOESN'T WORK
@@ -145,7 +200,7 @@ public class Confirm_Appointment extends AppCompatActivity {
                 .setUdf3(udf3)
                 .setUdf4(udf4)
                 .setUdf5(udf5)
-                .setIsDebug(false)
+                .setIsDebug(true)
                 .setKey(key)
                 .setMerchantId(merchantId);
 
@@ -206,7 +261,11 @@ public class Confirm_Appointment extends AppCompatActivity {
                 Log.i(TAG, "Success - Payment ID : " + data.getStringExtra(SdkConstants.PAYMENT_ID));
                 String paymentId = data.getStringExtra(SdkConstants.PAYMENT_ID);
                 showDialogMessage("Payment Success Id : " + paymentId);
-                setBooking();
+                if (isLawyer) {
+                    setBookingForLawyer();
+                } else {
+                    setBooking();
+                }
 
 
             } else if (resultCode == RESULT_CANCELED) {
@@ -242,6 +301,13 @@ public class Confirm_Appointment extends AppCompatActivity {
             }
         });
         builder.show();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.exit2);
 
     }
 }

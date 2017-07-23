@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_refund__request"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    tools:context="com.example.msp.legaldesire.Refund_Request">
+
+    <TextView
+        android:id="@+id/txt_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fill in the details. All fields are compulsory" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_view"
+        android:hint="Enter Name" />
+
+
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_name"
+        android:hint="Enter Email"
+        android:maxLength="30" />
+
+
+    <EditText
+        android:id="@+id/edit_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_email"
+        android:inputType="number"
+        android:hint="Enter Contact No"
+        android:maxLength="12" />
+
+    <TextView
+        android:id="@+id/txt_payu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_number"
+        android:text="Payu transaction id can be found in the payu account that you have used to complete the transaction in this app" />
+
+    <EditText
+        android:id="@+id/edit_transaction_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_payu"
+        android:hint="Enter Payu Transaction ID" />
+
+    <TextView
+        android:id="@+id/txt_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_transaction_id"
+        android:text="Type of service:" />
+
+    <RadioGroup
+        android:id="@+id/radio_grp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_service">
+
+        <RadioButton
+            android:id="@+id/radio_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Office Appointment"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_home_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Appointment"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/edit_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radio_grp"
+        android:hint="Enter Amount(in ₹)"
+        android:inputType="number" />
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btn_submit"
+        android:layout_centerHorizontal="true"
+        android:background="#F17A12"
+        android:padding="5dp"
+        android:text="Submit Refund Request"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

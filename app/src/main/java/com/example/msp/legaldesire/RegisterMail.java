@@ -1,8 +1,11 @@
 package com.example.msp.legaldesire;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +31,14 @@ public class RegisterMail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_mail);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>"));
+        }
         mEmail = (EditText) findViewById(R.id.edit_register_email);
         mPassword = (EditText) findViewById(R.id.edit_register_password);
         mTextView = (TextView) findViewById(R.id.text_email);

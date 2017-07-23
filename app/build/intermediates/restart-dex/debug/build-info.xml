@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="19"
+    build-mode="FULL"
+    density="xhdpi"
+    format="10"
+    plugin-version="2.3.3"
+    timestamp="1499320056890"
+    token="411997112621107605"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="13495" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="22253" />
+    <task
+        name="verifier"
+        duration="5799" />
+
+    <artifact
+        location="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
+
+    <build
+        build-mode="FULL"
+        timestamp="1499320056890"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\MSP\Desktop\LD final\Merge-Prem and Soheb\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.msp.legaldesire.MyCase.MyCases;
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
 import com.facebook.login.widget.ProfilePictureView;
@@ -267,7 +268,7 @@ public class OnLoginSuccessful extends AppCompatActivity
             mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("Regular");
         else if (FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer") != null)
             mDatabase = FirebaseDatabase.getInstance().getReference().child("User").child("Lawyer");
-        mDatabase.addValueEventListener(new ValueEventListener() {
+     /*   mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
@@ -282,7 +283,7 @@ public class OnLoginSuccessful extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         return true;
     }
 
@@ -329,25 +330,26 @@ public class OnLoginSuccessful extends AppCompatActivity
             Chat_Module chat_module = new Chat_Module();
             chat_module.setArguments(bundle);
             fragmentTransaction.replace(R.id.fragment_container, chat_module).commit();
-        } else if (id == R.id.panic_center) {
-            Send paniccenter = new Send();
-            paniccenter.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragment_container, paniccenter).commit();
-        } else if (id == R.id.online_lib) {
-            Online_lib onlinelib = new Online_lib();
-            onlinelib.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragment_container, onlinelib).commit();
-        } else if (id == R.id.complaint) {
-            Complaint_center compl = new Complaint_center();
-            compl.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragment_container, compl).commit();
-        } else if (id == R.id.video_center) {
-            Intent i = new Intent(getApplicationContext(), Video_center.class);
-            startActivity(i);
         } else if (id == R.id.my_appointments) {
-            My_Appointment my_appointment = new My_Appointment();
-            my_appointment.setArguments(bundle);
-            fragmentTransaction.replace(R.id.fragment_container, my_appointment).commit();
+            if (isLawyer) {
+                Lawyer_Appointment lawyer_appointment = new Lawyer_Appointment();
+                lawyer_appointment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, lawyer_appointment).commit();
+            } else {
+                My_Appointment my_appointment = new My_Appointment();
+                my_appointment.setArguments(bundle);
+                fragmentTransaction.replace(R.id.fragment_container, my_appointment).commit();
+            }
+
+
+        } else if (id == R.id.my_cases) {
+            MyCases myCases = new MyCases();
+            myCases.setArguments(bundle);
+            fragmentTransaction.replace(R.id.fragment_container, myCases).commit();
+        } else if (id == R.id.refund) {
+            Refund refund = new Refund();
+            refund.setArguments(bundle);
+            fragmentTransaction.replace(R.id.fragment_container, refund).commit();
 
         }
 
@@ -383,5 +385,7 @@ public class OnLoginSuccessful extends AppCompatActivity
         return accessToken != null;
 
     }
+
+
 
 }

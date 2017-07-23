@@ -77,8 +77,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Select_Location"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MailAccount"
             android:screenOrientation="portrait" />
@@ -115,19 +114,15 @@
             android:name=".Register"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Video_center" />
+        <activity android:name=".Review_Lawyer" />
+        <activity android:name=".Confirm_Chat_Payement" />
+        <activity android:name=".Confirm_Appointment" />
+        <activity android:name=".Confirm_Appointment2" />
+        <activity android:name=".Refund_Request" />
         <activity
-            android:name=".Review_Lawyer"
-            ></activity>
-        <activity
-            android:name=".Confirm_Chat_Payement"
-           />
-        <activity
-            android:name=".Confirm_Appointment"
-             />
-        <activity
-            android:name=".Confirm_Appointment2"
-             />
+            android:name=".MyCase.AddCase"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MyCase.EditCase"></activity>
     </application>
 
 </manifest>

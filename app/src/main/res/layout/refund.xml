@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.msp.legaldesire.Refund">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textView_condition"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:text="You are eligible for a refund only if you meet any one of the conditions:\n\n✔The lawyer you paid to chat with didn't reply or his counselling wasn't helpful\n\n✔The lawyer you had an appointment with cancelled it or didn't show up at the office\n\n✔The lawyer you appointed to visit your location didn't show up\n\n✔Your appointment wasn't booked after successful transaction\n\n✔Lawyer wasn't added to your chatlist after successful transaction" />
+
+    <Button
+        android:id="@+id/btn_eligible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#F17A12"
+        android:text="Yes! I'm eligible"
+        android:textColor="@color/white" />
+</RelativeLayout>

@@ -1,9 +1,12 @@
 package com.example.msp.legaldesire;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Select_Location extends AppCompatActivity {
     public String TAG = "selectlocation123";
     String mAppointmentDate, mAppointmentTime, mUserID, mLawyerID, mUserName, mLawyerName, mUserAddress;
+    boolean isLawyer = false;
     double mLatitude, mLongitude;
     GoogleMap mGoogleMap;
     MapView mMapView;
@@ -38,6 +42,15 @@ public class Select_Location extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select__location);
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F17A12")));
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>", Html.FROM_HTML_MODE_LEGACY));
+
+        } else {
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#FFFFFF'>Confirm Appointment </font>"));
+        }
+
         Bundle extras = getIntent().getExtras();
 
 
@@ -49,6 +62,7 @@ public class Select_Location extends AppCompatActivity {
         mLawyerID = extras.getString("Lawyer ID");
         mUserName = extras.getString("User Name");
         mLawyerName = extras.getString("Lawyer Name");
+        isLawyer = extras.getBoolean("isLawyer");
         Log.d("selectlocation123", mAppointmentDate + "," + mAppointmentTime + "," + mLatitude + "," + mLongitude + "," + mUserID + "," + mLawyerID + "," + mUserName + "," + mLawyerName);
 
         mMapView = (MapView) findViewById(R.id.map_View2);
@@ -128,11 +142,20 @@ public class Select_Location extends AppCompatActivity {
                     intent.putExtra("Lawyer ID", mLawyerID);
                     intent.putExtra("Lawyer Name", mLawyerName);
                     intent.putExtra("Cost", mCost);
+                    intent.putExtra("isLawyer", isLawyer);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.enter,R.anim.nothing);
 
                 }
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.nothing, R.anim.exit2);
 
     }
 

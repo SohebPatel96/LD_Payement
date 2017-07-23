@@ -12,6 +12,9 @@
         <item
             android:id="@+id/my_appointments"
             android:title="My Appointments" />
+        <item
+            android:id="@+id/my_cases"
+            android:title="My Cases" />
 
         <item
             android:id="@+id/online_lib"
@@ -26,8 +29,12 @@
             android:id="@+id/panic_center"
             android:title="Panic Center" />
         <item
+            android:id="@+id/refund"
+            android:title="Refund" />
+        <item
             android:id="@+id/logout"
             android:title="Logout" />
+
 
     </group>
 </menu>
