@@ -56,6 +56,8 @@ public class Appointment_BookLawyer extends Fragment {
     DatePicker datePicker;
     NumberPicker numberPicker;
 
+    boolean isLawyer;
+
     String mAppointmentDate, mAppointmentTime;
 
     DatabaseReference mDatabase;
@@ -76,6 +78,7 @@ public class Appointment_BookLawyer extends Fragment {
         Bundle bundle = this.getArguments();
         mUserID = bundle.getString("User ID");
         mLawyerID = bundle.getString("Lawyer ID");
+        isLawyer = bundle.getBoolean("isLawyer");
     }
 
     @Override
@@ -122,18 +125,33 @@ public class Appointment_BookLawyer extends Fragment {
             }
         });
 
-        root3.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mUserName = dataSnapshot.child("Name").getValue(String.class);
+        if (isLawyer) {
+            root2.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mUserName = dataSnapshot.child("Name").getValue(String.class);
 
-            }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        } else {
+            root3.child(mUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mUserName = dataSnapshot.child("Name").getValue(String.class);
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
 
         mConfirmBooking.setOnClickListener(new View.OnClickListener() {
@@ -151,6 +169,7 @@ public class Appointment_BookLawyer extends Fragment {
                 Intent intent = new Intent(getActivity(), Confirm_Appointment.class);
                 intent.putExtra("User ID", mUserID);
                 intent.putExtra("User Name", mUserName);
+                intent.putExtra("isLawyer", isLawyer);
                 intent.putExtra("Appointment Type", "Office Appointment");
                 intent.putExtra("Appointment Date", mAppointmentDate);
                 intent.putExtra("Appointment Time", mAppointmentTime);
@@ -158,6 +177,7 @@ public class Appointment_BookLawyer extends Fragment {
                 intent.putExtra("Lawyer ID", mLawyerID);
                 intent.putExtra("Lawyer Name", mLawyerName);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.enter,R.anim.nothing);
             }
         });
 
